@@ -3,93 +3,6 @@
 
 <head>
     @include('partials.head')
-
-
-<style>
-.uploader-container {
-    border: 1px dashed #ccc;
-    padding: 8px 12px;
-    border-radius: 5px;
-    background: #fff;
-    font-size: 14px;
-    width: 100%;           /* ✅ Lebarkan sejajar kotak input */
-    display: flex; 
-    align-items: center;   /* ✅ Rata tengah vertikal */
-    gap: 8px;
-    min-height: 38px;      /* ✅ Tinggi sama seperti input form */
-    cursor: pointer;
-}
-
-.uploader-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 12px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 13px;
-}
-    .uploader-item {
-        border: 1px solid #01A8E6;
-        border-radius: 4px;
-        padding: 5px 8px;
-        margin-top: 6px;
-        background: #fff;
-        font-size: 13px;
-        position: relative;
-    }
-    .uploader-remove-icon {
-    position: absolute;
-    top: 50%;
-    right: 6px;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    font-size: 16px;
-    color: #dc3545;
-    cursor: pointer;
-    display: none;
-    line-height: 1;
-}
-    .uploader-progress {
-        background: #e0e0e0;
-        height: 18px;
-        border-radius: 3px;
-        margin-top: 4px;
-        width: 100%;
-        position: relative;
-        font-size: 12px;
-        color: #fff;
-        overflow: hidden;
-    }
-    .uploader-progress-bar {
-        background: #28a745;
-        width: 0%;
-        height: 100%;
-        border-radius: 3px;
-        text-align: center;
-        line-height: 18px;
-        font-weight: bold;
-        white-space: nowrap;
-    }
-    .uploader-filename {
-        font-size: 13px;
-        margin-bottom: 3px;
-        word-break: break-all;
-    }
-    .uploader-input {
-        height: 26px;
-        font-size: 13px;
-        padding: 2px 6px;
-        width: 100%;
-        margin-top: 3px;
-    }
-    /* Highlight saat drag & drop */
-    .uploader-container.dragover {
-        background-color: #f1f1f1;
-        border-color: #007bff;
-    }
-</style>
 </head>
 
 <body>
@@ -111,9 +24,9 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="#">
-                                    <button type="button" class="btn btn-outline-info btn-icon-text"
-                                        data-bs-toggle="modal" data-bs-target="#datasiswa" data-whatever="@mdo">
-                                        <i class="mdi mdi-note-plus"></i> Add Data
+                                    <button type="button" class="btn btn-info btn-icon" data-bs-toggle="modal"
+                                        data-bs-target="#datasiswa" data-whatever="@mdo" title="Add Data">
+                                        <i class="mdi mdi-note-plus"></i>
                                     </button>
                                 </a>
                             </li>
@@ -166,9 +79,13 @@
                                                         aria-expanded="false"> <i class="mdi mdi-cog"></i></button>
                                                     <div class="dropdown-menu"
                                                         aria-labelledby="dropdownMenuSizeButton3">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Detail</a>
+                                                        <button class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                            data-bs-target="#editdatasiswa"><i
+                                                                class="mdi mdi-lead-pencil"></i> Edit</button>
+                                                        <button class="dropdown-item" href="#"><i
+                                                                class="mdi mdi-delete-forever"></i> Delete</button>
+                                                        <button class="dropdown-item" href="#"><i
+                                                                class="mdi mdi-eye"></i> Detail</button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -197,9 +114,12 @@
                                                         aria-expanded="false"> <i class="mdi mdi-cog"></i></button>
                                                     <div class="dropdown-menu"
                                                         aria-labelledby="dropdownMenuSizeButton3">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Detail</a>
+                                                        <a class="dropdown-item" href="#"><i
+                                                                class="mdi mdi-lead-pencil"></i> Edit</a>
+                                                        <a class="dropdown-item" href="#"><i
+                                                                class="mdi mdi-delete-forever"></i> Delete</a>
+                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-eye"></i>
+                                                            Detail</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -228,9 +148,12 @@
                                                         aria-expanded="false"> <i class="mdi mdi-cog"></i></button>
                                                     <div class="dropdown-menu"
                                                         aria-labelledby="dropdownMenuSizeButton3">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Delete</a>
-                                                        <a class="dropdown-item" href="#">Detail</a>
+                                                        <a class="dropdown-item" href="#"><i
+                                                                class="mdi mdi-lead-pencil"></i> Edit</a>
+                                                        <a class="dropdown-item" href="#"><i
+                                                                class="mdi mdi-delete-forever"></i> Delete</a>
+                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-eye"></i>
+                                                            Detail</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -248,20 +171,23 @@
 
                     </div>
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
 
                 <!-- partial -->
+                @include('partials.footer')
+
             </div>
             <!-- main-panel ends -->
         </div>
 
         <!-- Modal Popup -->
-        @include('modal.addDataSiswa')
+        @include('master_data.siswa.modals.add')
+        @include('master_data.siswa.modals.edit')
         <!-- End Modal Popup -->
+
+        @include('partials.script')
+
     </div>
 
-    @include('partials.footer')
 
 </body>
 

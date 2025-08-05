@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterData\SiswaController;
+use App\Http\Controllers\MasterData\GuruController;
 
 Route::get('/', function () {
     return view('index');
@@ -19,3 +20,4 @@ Route::post('/logout', function () {
 })->name('logout');
 
 Route::get('/datasiswa', [SiswaController::class, 'index'])->name('siswa');
+Route::get('/dataguru', [GuruController::class, 'index'])->name('guru');

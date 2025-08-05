@@ -23,8 +23,19 @@
 
     <!-- datepicker -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
-
     <link rel="stylesheet" href="{{ asset('css/vertical-light/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/upload.css') }}">
+    
+
+    <!-- ============================ COMPONENTS CSS ====================================== -->
+    <!-- form-wizard -->
+    <link rel="stylesheet" href="{{ asset('css/components/form-wizard.css') }}">
+    <!-- Dropdown -->
+    <link rel="stylesheet" href="{{ asset('css/components/dropdown.css') }}">
+    <!-- File Uploader -->
+    <link rel="stylesheet" href="{{ asset('css/components/file-uploader.css') }}">
+    <!-- ============================ END COMPONENTS CSS ================================== -->
+
+
+
 
 </head>

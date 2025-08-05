@@ -33,7 +33,7 @@
                         <a class="nav-link" href="{{ route('siswa') }}">Data Siswa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/dropdowns.html">Data Guru</a>
+                        <a class="nav-link" href="{{ route('guru') }}">Data Guru</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="pages/ui-features/typography.html">Data Staff</a>

@@ -1,0 +1,76 @@
+.steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.steps::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #ccc;
+    z-index: 0;
+}
+
+.step {
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    z-index: 1;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    transition: 0.3s;
+}
+
+.step.active {
+    background-color: #6a00ff;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.step-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.step-labels .disabled {
+    color: #aaa;
+}
+
+.step-section {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.step-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.buttons button {
+    min-width: 100px;
+    margin: 5px;
+}

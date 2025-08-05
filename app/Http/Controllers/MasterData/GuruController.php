@@ -4,11 +4,11 @@ namespace App\Http\Controllers\MasterData;
 
 use Illuminate\Http\Request;
 
-class SiswaController
+class GuruController
 {
     public function index()
     {
-        return view('master_data.siswa.index');
+        return view('master_data.guru.index');
     }
     
 }

@@ -1,0 +1,32 @@
+/* Rapikan dropdown multi-select */
+.dropdown-menu {
+    padding: 10px;
+    min-width: 260px;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 8px;
+}
+
+.dropdown-menu .form-check {
+    display: flex;
+    align-items: center;
+    padding: 3px 5px;
+    margin: 0;
+    width: 100%;
+    margin-left: 15px;
+}
+
+.dropdown-menu .form-check-input {
+    margin-right: 2px;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+}
