@@ -24,7 +24,7 @@
     <!-- datepicker -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vertical-light/style.css') }}">
-    
+
 
     <!-- ============================ COMPONENTS CSS ====================================== -->
     <!-- form-wizard -->
@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="{{ asset('css/components/dropdown.css') }}">
     <!-- File Uploader -->
     <link rel="stylesheet" href="{{ asset('css/components/file-uploader.css') }}">
+    <!-- Modals -->
+    <link rel="stylesheet" href="{{ asset('css/components/modals.css') }}">
+
     <!-- ============================ END COMPONENTS CSS ================================== -->
 
 

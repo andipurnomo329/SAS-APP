@@ -43,13 +43,12 @@
                                         <tr>
                                             <th>Foto</th>
                                             <th>Nama</th>
-                                            <th>NISN</th>
-                                            <th>NIS</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>TTL</th>
-                                            <th>Kelas</th>
-                                            <th>Tanggal Masuk</th>
-                                            <th>Status</th>
+                                            <th>NIP</th>
+                                            <th>Email</th>
+                                            <th>Jabatan</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>Kelas Diajar</th>
+                                            <th>Status Kepegawaian</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -59,24 +58,56 @@
                                                     class="rounded-circle"></td>
                                             <td>Arianto</td>
                                             <td>0056789101</td>
-                                            <td>005678</td>
-                                            <td>Laki - Laki</td>
-                                            <td>Jakarta, 06/08/2003</td>
-                                            <td>12 IPA 1</td>
-                                            <td>12/06/2020</td>
-                                            <td><label class="badge badge-info">Aktif</label></td>
+                                            <td>Guru@gmail.com</td>
+                                            <td>Guru</td>
+                                            <td>IPA,IPS,PKN</td>
+                                            <td>10A</td>
+                                            <td><label class="badge badge-info">Honorer</label></td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="badge badge-secondary btn-sm dropdown-toggle"
                                                         type="button" data-bs-toggle="dropdown"> <i
                                                             class="mdi mdi-cog"></i></button>
                                                     <div class="dropdown-menu">
-                                                        <button class="dropdown-item"><i
-                                                                class="mdi mdi-lead-pencil"></i> Edit</button>
+                                                        <button class="dropdown-item btn-show-edit-modal">
+                                                            <i class="mdi mdi-lead-pencil"></i> Edit
+                                                        </button>
                                                         <button class="dropdown-item"><i
                                                                 class="mdi mdi-delete-forever"></i> Delete</button>
-                                                        <button class="dropdown-item"><i class="mdi mdi-eye"></i>
-                                                            Detail</button>
+                                                        <button type="button"
+                                                            class="dropdown-item btn-show-detail-modal">
+                                                            <i class="mdi mdi-eye"></i> Detail
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><img src="{{ asset('images/faces/face1.jpg') }}" width="50" height="50"
+                                                    class="rounded-circle"></td>
+                                            <td>Arianto</td>
+                                            <td>0056789101</td>
+                                            <td>Guru@gmail.com</td>
+                                            <td>Wali Kelas</td>
+                                            <td>IPA,IPS,PKN</td>
+                                            <td>11A</td>
+                                            <td><label class="badge badge-success">PNS</label></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="badge badge-secondary btn-sm dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"> <i
+                                                            class="mdi mdi-cog"></i></button>
+                                                    <div class="dropdown-menu">
+                                                        <button class="dropdown-item btn-show-edit-modal">
+                                                            <i class="mdi mdi-lead-pencil"></i> Edit
+                                                        </button>
+                                                        <button class="dropdown-item"><i
+                                                                class="mdi mdi-delete-forever"></i> Delete</button>
+                                                        <button type="button"
+                                                            class="dropdown-item btn-show-detail-modal">
+                                                            <i class="mdi mdi-eye"></i> Detail
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -96,23 +127,49 @@
 
     <!-- Modal add -->
     @include('master_data.guru.modals.add')
+    @include('master_data.guru.modals.edit')
+    @include('master_data.guru.modals.detail')
     <!-- End Modal add -->
     @include('partials.script')
     <script>
-    const form = document.getElementById("guruForm");
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
+    const formAdd = document.getElementById("guruForm");
+    const formEdit = document.getElementById("guruFormEdit");
 
-        // ========== AJAX SIMULASI ==========
+    // ✅ Action untuk tambah data
+    formAdd.addEventListener("submit", function(e) {
+        e.preventDefault();
         alert("✅ Data guru berhasil disimpan!");
         bootstrap.Modal.getInstance(document.getElementById('dataguru')).hide();
+        formAdd.reset();
+    });
 
-        // Reset stepper
-        window.currentStep = 0;
-        window.updateStepUI();
-        form.reset();
+    formEdit.addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("✏️ Data guru berhasil diupdate!");
+        bootstrap.Modal.getInstance(document.getElementById('editdataguru')).hide();
+        formEdit.reset();
+    });
+
+    // ✅ Tampilkan modal edit tanpa data
+    document.querySelectorAll('.btn-show-edit-modal').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Reset form edit agar kosong
+            document.getElementById('guruFormEdit').reset();
+            // Tampilkan modal edit
+            var modalEdit = new bootstrap.Modal(document.getElementById('editdataguru'));
+            modalEdit.show();
+        });
+    });
+
+    // ✅ Tampilkan modal detail sederhana
+    document.querySelectorAll('.btn-show-detail-modal').forEach(btn => {
+        btn.addEventListener('click', function() {
+            var modalDetail = new bootstrap.Modal(document.getElementById('detaildataguru'));
+            modalDetail.show();
+        });
     });
     </script>
+
 
 
 </body>

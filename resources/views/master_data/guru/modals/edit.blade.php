@@ -1,5 +1,6 @@
-<div class="modal fade" id="editdataguru" tabindex="-1" role="dialog" aria-labelledby="editdataguruLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="editdataguru" tabindex="-1" role="dialog" aria-labelledby="editdataguruLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered custom-modal-position-sm">
         <div class="modal-content bg-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="editdataguruLabel">Edit Data Guru</h5>
@@ -10,7 +11,7 @@
             <div class="card">
                 <div class="card-body position-relative">
                     <!-- (matikan novalidate untuk mengaktifkan required pada field) -->
-                    <form id="guruFormEdit" novalidate> 
+                    <form id="guruFormEdit" novalidate data-stepper>
                         <div class="step-labels">
                             <span>Pribadi</span>
                             <span>Kepegawaian</span>
@@ -30,37 +31,40 @@
                         <section class="step-section active">
                             <div class="form-group">
                                 <label>NIK : <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="namaGuru" placeholder="NIK">
+                                <input type="text" class="form-control" id="nik" value="31558665584445" readonly>
                             </div>
                             <div class="form-group">
                                 <label>NIP / NUPTK : <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="namaGuru" placeholder="NIP/NUPTK">
+                                <input type="text" class="form-control" id="nip" placeholder="NIP/NUPTK" value="899875">
                             </div>
                             <div class="form-group">
                                 <label>Nama Lengkap : <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="namaGuru" placeholder="Nama Lengkap">
+                                <input type="text" class="form-control" id="namalengkap" placeholder="Nama Lengkap"
+                                    value="Raden Saleh">
                             </div>
                             <div class="form-group mt-2">
                                 <label>Jenis Kelamin : <span style="color: red;">*</span></label>
                                 <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
                                     <option value="" disabled selected>Pilih jenis kelamin</option>
                                     <option value="Laki-Laki">Laki-Laki</option>
-                                    <option value="Perempuan">Perempuan</option>
+                                    <option value="Perempuan" selected>Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Tempat Lahir : <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="namaGuru" placeholder="Tempat Lahir">
+                                <input type="text" class="form-control" id="namaGuru" placeholder="Tempat Lahir"
+                                    value="Jakarta">
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Lahir : <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control date" placeholder="dd/mm/yyyy">
+                                <input type="text" class="form-control date" placeholder="dd/mm/yyyy"
+                                    value="01/01/2000">
                             </div>
                             <div class="form-group mt-2">
                                 <label>Agama :</label>
                                 <select class="form-select" name="agama" id="agama" required>
-                                    <option value="" disabled selected>Pilih Agama</option>
-                                    <option>Islam</option>
+                                    <option value="" disabled>Pilih Agama</option>
+                                    <option selected>Islam</option>
                                     <option>Budha</option>
                                     <option>Kristen Protestan</option>
                                     <option>Katolik</option>
@@ -71,7 +75,7 @@
                                 <label>Status Pernikahan :</label>
                                 <select class="form-select" name="status_pernikahan" id="status_pernikahan" required>
                                     <option value="" disabled selected>Pilih Status</option>
-                                    <option>Menikah</option>
+                                    <option selected>Menikah</option>
                                     <option>Lajang</option>
                                     <option>Single</option>
                                 </select>
@@ -79,15 +83,17 @@
                             <div class="form-group">
                                 <label>Alamat Lengkap : <span style="color: red;">*</span></label>
                                 <textarea class="form-control" id="exampleTextarea1" rows="4"
-                                    placeholder="Alamat"></textarea>
+                                    placeholder="Alamat">Jl Pojok raya, kel. Srengseng, Jakarta Barat</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Nomor Telp : <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="namaGuru" placeholder="Nomo Telp">
+                                <input type="text" class="form-control" id="namaGuru" placeholder="Nomo Telp"
+                                    value="0895554885522">
                             </div>
                             <div class="form-group">
                                 <label>Email : <span style="color: red;">*</span></label>
-                                <input type="text" class="form-control" id="namaGuru" placeholder="Email">
+                                <input type="text" class="form-control" id="namaGuru" placeholder="Email"
+                                    value="jhon@gmail.com">
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 col-form-label">Upload File <span

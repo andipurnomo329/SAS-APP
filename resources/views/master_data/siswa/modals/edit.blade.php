@@ -1,5 +1,5 @@
 <div class="modal fade" id="editdatasiswa" tabindex="-1" role="dialog" aria-labelledby="editdatasiswaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-centered custom-modal-position-xl">
         <div class="modal-content bg-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="editdatasiswaLabel">Edit data</h5>

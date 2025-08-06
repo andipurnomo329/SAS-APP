@@ -1,5 +1,5 @@
 <div class="modal fade" id="dataguru" tabindex="-1" role="dialog" aria-labelledby="dataguruLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm modal-dialog-centered custom-modal-position-sm">
         <div class="modal-content bg-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="dataguruLabel">Input Data Guru</h5>
@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body position-relative">
                     <!-- (matikan novalidate untuk mengaktifkan required pada field) -->
-                    <form id="guruForm" novalidate> 
+                    <form id="guruForm" novalidate data-stepper> 
                         <div class="step-labels">
                             <span>Pribadi</span>
                             <span>Kepegawaian</span>

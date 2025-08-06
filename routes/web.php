@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MasterData\SiswaController;
 use App\Http\Controllers\MasterData\GuruController;
+use App\Http\Controllers\MasterData\KelasController;
 
 Route::get('/', function () {
     return view('index');
@@ -21,3 +22,4 @@ Route::post('/logout', function () {
 
 Route::get('/datasiswa', [SiswaController::class, 'index'])->name('siswa');
 Route::get('/dataguru', [GuruController::class, 'index'])->name('guru');
+Route::get('/datakelas', [KelasController::class, 'index'])->name('kelas');

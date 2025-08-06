@@ -1,0 +1,51 @@
+/* ==== Ukuran modal custom ==== */
+
+/* Modal kecil (sm) → diperbesar */
+.modal-dialog.custom-modal-position-sm {
+    max-width: 500px !important; /* default Bootstrap ±500px */
+}
+
+/* Modal besar (lg) → diperbesar */
+.modal-dialog.modal-lg.custom-modal-position-lg {
+    max-width: 950px !important; /* default Bootstrap ±800px */
+}
+
+/* Modal ekstra besar (xl) → diperbesar */
+.modal-dialog.modal-xl.custom-modal-position-xl {
+    max-width: 1400px !important; /* default Bootstrap ±1140px */
+}
+
+
+/* ==== Posisi modal ==== */
+
+/* Modal kecil (sm) naik sedikit */
+.modal.show .modal-dialog.modal-dialog-centered.custom-modal-position-sm {
+    top: 30px !important;
+    transform: none !important;
+    margin-top: 5px !important;
+}
+
+/* Modal besar (lg) */
+.modal.show .modal-dialog.modal-dialog-centered.custom-modal-position-lg {
+    top: 40px !important;
+    transform: none !important;
+    margin-top: 5px !important;
+}
+
+/* Modal ekstra besar (xl) */
+.modal.show .modal-dialog.modal-dialog-centered.custom-modal-position-xl {
+    top: 50px !important;
+    transform: none !important;
+    margin-top: 10px !important;
+}
+
+/* ==== Mobile tetap center ==== */
+@media (max-width: 576px) {
+    .modal.show .modal-dialog.modal-dialog-centered.custom-modal-position-sm,
+    .modal.show .modal-dialog.modal-dialog-centered.custom-modal-position-lg,
+    .modal.show .modal-dialog.modal-dialog-centered.custom-modal-position-xl {
+        top: auto !important;
+        margin-top: 5px !important;
+        max-width: 95% !important; /* biar pas di layar kecil */
+    }
+}

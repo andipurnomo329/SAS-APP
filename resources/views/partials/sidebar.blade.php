@@ -42,7 +42,7 @@
                         <a class="nav-link" href="pages/ui-features/typography.html">Data Pelajaran</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/typography.html">Data Kelas</a>
+                        <a class="nav-link" href="{{ route ('kelas') }}">Data Kelas</a>
                     </li>
                 </ul>
             </div>
