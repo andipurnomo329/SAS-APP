@@ -36,10 +36,10 @@
                         <a class="nav-link" href="{{ route('guru') }}">Data Guru</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/typography.html">Data Staff</a>
+                        <a class="nav-link" href="{{ route('staff') }}">Data Staff</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/typography.html">Data Pelajaran</a>
+                        <a class="nav-link" href="{{ route('mapel') }}">Data Pelajaran</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route ('kelas') }}">Data Kelas</a>
@@ -58,7 +58,7 @@
             <div class="collapse" id="jadwal">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/ui-features/buttons.html">Jadwal Pelajaran</a>
+                        <a class="nav-link" href="{{route ('jadwal')}}">Jadwal Pelajaran</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="pages/ui-features/dropdowns.html">Tahun Ajaran</a>

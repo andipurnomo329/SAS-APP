@@ -3,7 +3,7 @@
         <div class="modal-content bg-white">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h5 class="modal-title" id="editdatakelasLabel">Input Data Kelas</h5>
+                <h5 class="modal-title" id="editdatakelasLabel">Edit Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 

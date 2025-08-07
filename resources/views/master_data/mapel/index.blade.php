@@ -19,13 +19,13 @@
                 <!-- Content -->
 
                 <div class="page-header">
-                    <h3 class="page-title"> Data Kelas </h3>
+                    <h3 class="page-title"> Data Siswa </h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="#">
                                     <button type="button" class="btn btn-info btn-icon" data-bs-toggle="modal"
-                                        data-bs-target="#datakelas" data-whatever="@mdo" title="Add Data">
+                                        data-bs-target="#datamapel" data-whatever="@mdo" title="Add Data">
                                         <i class="mdi mdi-note-plus"></i>
                                     </button>
                                 </a>
@@ -36,32 +36,24 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Daftar Data Kelas</h4>
+                        <h4 class="card-title">Daftar Data Murid</h4>
                         <div class="row">
                             <div class="col-12">
                                 <table id="order-listing" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Nama Kelas</th>
-                                            <th>Tingkat</th>
-                                            <th>Jurusan</th>
-                                            <!-- <th>Tahun Ajaran</th> -->
-                                            <th>kouta Siswa</th>
-                                            <th>Status</th>
+                                            <th>Kode</th>
+                                            <th>Nama Mapel</th>
+                                            <th>Deskripsi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
                                         <tr>
-                                            <td>XII IPA 1</td>
-                                            <td>12</td>
-                                            <td>IPA</td>
-                                            <!-- <td>2024/2025</td> -->
-                                            <td>50 Orang</td>
-                                            <td>
-                                                <label class="badge badge-info">Aktif</label>
-                                            </td>
+                                            <td>MAT</td>
+                                            <td>Matematika</td>
+                                            <td>Opsinonal</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="badge badge-secondary btn-sm dropdown-toggle"
@@ -71,24 +63,20 @@
                                                     <div class="dropdown-menu"
                                                         aria-labelledby="dropdownMenuSizeButton3">
                                                         <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#editdatakelas"><i
+                                                            data-bs-target="#editdatasiswa"><i
                                                                 class="mdi mdi-lead-pencil"></i> Edit</button>
                                                         <button class="dropdown-item" href="#"><i
                                                                 class="mdi mdi-delete-forever"></i> Delete</button>
+                                                        <button class="dropdown-item" href="#"><i
+                                                                class="mdi mdi-eye"></i> Detail</button>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-
                                         <tr>
-                                            <td>XII IPS 1</td>
-                                            <td>11</td>
-                                            <td>IPS</td>
-                                            <!-- <td>2023/2024</td> -->
-                                            <td>50 Orang</td>
-                                            <td>
-                                                <label class="badge badge-danger">Non Aktif</label>
-                                            </td>
+                                            <td>BIND</td>
+                                            <td>Bahasa Indonesia</td>
+                                            <td>Opsinonal</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="badge badge-secondary btn-sm dropdown-toggle"
@@ -98,7 +86,7 @@
                                                     <div class="dropdown-menu"
                                                         aria-labelledby="dropdownMenuSizeButton3">
                                                         <button class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                            data-bs-target="#editdatakelas"><i
+                                                            data-bs-target="#editdatamapel"><i
                                                                 class="mdi mdi-lead-pencil"></i> Edit</button>
                                                         <button class="dropdown-item" href="#"><i
                                                                 class="mdi mdi-delete-forever"></i> Delete</button>
@@ -128,8 +116,8 @@
         </div>
 
         <!-- Modal Popup -->
-        @include('master_data.kelas.modals.add')
-        @include('master_data.kelas.modals.edit')
+        @include('master_data.mapel.modals.add')
+        @include('master_data.mapel.modals.edit')
         <!-- End Modal Popup -->
 
         @include('partials.script')

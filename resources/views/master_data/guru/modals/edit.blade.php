@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-sm modal-dialog-centered custom-modal-position-sm">
         <div class="modal-content bg-white">
             <div class="modal-header">
-                <h5 class="modal-title" id="editdataguruLabel">Edit Data Guru</h5>
+                <h5 class="modal-title" id="editdataguruLabel">Edit Data</h5>
                 <button type="button" class="close bg-white" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

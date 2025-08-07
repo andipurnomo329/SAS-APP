@@ -25,7 +25,7 @@
                             <li class="breadcrumb-item">
                                 <a href="#">
                                     <button type="button" class="btn btn-info btn-icon" data-bs-toggle="modal"
-                                        data-bs-target="#datasiswa" data-whatever="@mdo" title="Add Data">
+                                        data-bs-target="#datastaff" data-whatever="@mdo" title="Add Data">
                                         <i class="mdi mdi-note-plus"></i>
                                     </button>
                                 </a>
@@ -42,14 +42,10 @@
                                 <table id="order-listing" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Foto</th>
-                                            <th>Nama</th>
-                                            <th>NISN</th>
-                                            <th>NIS</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>TTL</th>
-                                            <th>Kelas</th>
-                                            <th>Tanggal Masuk</th>
+                                            <th>NIP</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Jabatan</th>
+                                            <th>Telepon</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -57,17 +53,10 @@
 
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <img src="{{ asset('images/faces/face1.jpg') }}" alt="Arianto"
-                                                    width="50" height="50" style="border-radius: 50%;">
-                                            </td>
-                                            <td>Arianto</td>
-                                            <td>0056789101</td>
-                                            <td>005678</td>
-                                            <td>Laki - Laki</td>
-                                            <td>Jakarta, 06/08/2003</td>
-                                            <td>12 IPA 1</td>
-                                            <td>12/06/2020</td>
+                                            <td>198720</td>
+                                            <td>Rudi Hartono</td>
+                                            <td>Tata Usaha</td>
+                                            <td>08123456789</td>
                                             <td>
                                                 <label class="badge badge-info">Aktif</label>
                                             </td>
@@ -90,56 +79,13 @@
                                                 </div>
                                             </td>
                                         </tr>
-
                                         <tr>
+                                            <td>-</td>
+                                            <td>Siti Aminah</td>
+                                            <td>Administrasi</td>
+                                            <td>08234567890</td>
                                             <td>
-                                                <img src="{{ asset('images/faces/face2.jpg') }}" alt="Arianto"
-                                                    width="50" height="50" style="border-radius: 50%;">
-                                            </td>
-                                            <td>Sinta Dwei</td>
-                                            <td>0056789101</td>
-                                            <td>005678</td>
-                                            <td>Perempuan</td>
-                                            <td>Bandung, 06/08/2003</td>
-                                            <td>12 IPA 2</td>
-                                            <td>12/06/2017</td>
-                                            <td>
-                                                <label class="badge badge-success">Lulus</label>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="badge badge-secondary btn-sm dropdown-toggle"
-                                                        type="button" data-bs-toggle="dropdown"> <i
-                                                            class="mdi mdi-cog"></i></button>
-                                                    <div class="dropdown-menu">
-                                                        <button class="dropdown-item btn-show-edit-modal">
-                                                            <i class="mdi mdi-lead-pencil"></i> Edit
-                                                        </button>
-                                                        <button class="dropdown-item"><i
-                                                                class="mdi mdi-delete-forever"></i> Delete</button>
-                                                        <button type="button"
-                                                            class="dropdown-item btn-show-detail-modal">
-                                                            <i class="mdi mdi-eye"></i> Detail
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <img src="{{ asset('images/faces/face4.jpg') }}" alt="Arianto"
-                                                    width="50" height="50" style="border-radius: 50%;">
-                                            </td>
-                                            <td>Jaka Susilo</td>
-                                            <td>0056789101</td>
-                                            <td>005678</td>
-                                            <td>Laki - Laki</td>
-                                            <td>Medan, 06/08/2003</td>
-                                            <td>11 IPS 1</td>
-                                            <td>12/06/2020</td>
-                                            <td>
-                                                <label class="badge badge-danger">Pindah</label>
+                                                <label class="badge badge-danger">Non Aktif</label>
                                             </td>
                                             <td>
                                                 <div class="dropdown">
@@ -182,31 +128,30 @@
         </div>
 
         <!-- Modal Popup -->
-        @include('master_data.siswa.modals.add')
-        @include('master_data.siswa.modals.edit')
-        @include('master_data.siswa.modals.detail')
+        @include('master_data.staff.modals.add')
+        @include('master_data.staff.modals.edit')
+        @include('master_data.staff.modals.detail')
         <!-- End Modal Popup -->
 
         @include('partials.script')
 
     </div>
-
     <script>
-    const formAdd = document.getElementById("siswaForm");
-    const formEdit = document.getElementById("siswaFormEdit");
+    const formAdd = document.getElementById("staffForm");
+    const formEdit = document.getElementById("editFormStaff");
 
     // ✅ Action untuk tambah data
     formAdd.addEventListener("submit", function(e) {
         e.preventDefault();
         alert("✅ Data guru berhasil disimpan!");
-        bootstrap.Modal.getInstance(document.getElementById('datasiswa')).hide();
+        bootstrap.Modal.getInstance(document.getElementById('datastaff')).hide();
         formAdd.reset();
     });
 
     formEdit.addEventListener("submit", function(e) {
         e.preventDefault();
         alert("✏️ Data guru berhasil diupdate!");
-        bootstrap.Modal.getInstance(document.getElementById('editdatasiswa')).hide();
+        bootstrap.Modal.getInstance(document.getElementById('editFormStaff')).hide();
         formEdit.reset();
     });
 
@@ -214,9 +159,9 @@
     document.querySelectorAll('.btn-show-edit-modal').forEach(btn => {
         btn.addEventListener('click', function() {
             // Reset form edit agar kosong
-            document.getElementById('siswaFormEdit').reset();
+            document.getElementById('editFormStaff').reset();
             // Tampilkan modal edit
-            var modalEdit = new bootstrap.Modal(document.getElementById('editdatasiswa'));
+            var modalEdit = new bootstrap.Modal(document.getElementById('datastaff'));
             modalEdit.show();
         });
     });
@@ -224,7 +169,7 @@
     // ✅ Tampilkan modal detail sederhana
     document.querySelectorAll('.btn-show-detail-modal').forEach(btn => {
         btn.addEventListener('click', function() {
-            var modalDetail = new bootstrap.Modal(document.getElementById('detaildatasiswa'));
+            var modalDetail = new bootstrap.Modal(document.getElementById('detaildatastaff'));
             modalDetail.show();
         });
     });
