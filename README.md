@@ -59,3 +59,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Setting env
+
+Tambahkan di .env
+```
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=true
+SESSION_COOKIE=laravel_session
+SESSION_SECURE_COOKIE=false
+SESSION_HTTP_ONLY=true
+SESSION_SAME_SITE=lax
+
+MICROSERVICE_BASE_URI=http://microservice.test
+```

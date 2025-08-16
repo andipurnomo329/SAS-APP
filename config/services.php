@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'microservice' => [
+        'base_uri' => env('MICROSERVICE_BASE_URI', 'http://microservice.test')
+    ],
 ];

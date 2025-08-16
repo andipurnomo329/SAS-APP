@@ -30,19 +30,19 @@
             <div class="collapse" id="master-data">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('siswa') }}">Data Siswa</a>
+                        <a class="nav-link" href="{{ route('master-data.siswa') }}">Data Siswa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('guru') }}">Data Guru</a>
+                        <a class="nav-link" href="{{ route('master-data.guru') }}">Data Guru</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('staff') }}">Data Staff</a>
+                        <a class="nav-link" href="{{ route('master-data.staff') }}">Data Staff</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('mapel') }}">Data Pelajaran</a>
+                        <a class="nav-link" href="{{ route('master-data.mapel') }}">Data Pelajaran</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route ('kelas') }}">Data Kelas</a>
+                        <a class="nav-link" href="{{ route ('master-data.kelas') }}">Data Kelas</a>
                     </li>
                 </ul>
             </div>

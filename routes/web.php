@@ -11,24 +11,30 @@ use App\Http\Controllers\MasterData\MapelController;
 use App\Http\Controllers\MasterData\StaffController;
 use App\Http\Controllers\JadwalAkademik\JadwalController;
 
-Route::get('/', function () {
-    return view('index');
+Route::middleware(['web'])->group(function () {
+    Route::get('/', fn () => redirect()->route('dashboard'));
+    Route::middleware('guest.session')->group(function () {
+        Route::get('/login', [LoginController::class, 'index'])->name('login');
+        Route::post('/login', [LoginController::class, 'login'])->name('login');
+    });
+
+    Route::middleware('auth.session')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        // ...
+
+
+        Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    });
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-
-Route::post('/logout', function () {
-    Auth::logout();
-    return redirect('/login');
-})->name('logout');
-
 // Master Data 
-Route::get('/datasiswa', [SiswaController::class, 'index'])->name('siswa');
-Route::get('/dataguru', [GuruController::class, 'index'])->name('guru');
-Route::get('/datakelas', [KelasController::class, 'index'])->name('kelas');
-Route::get('/datamapel', [MapelController::class, 'index'])->name('mapel');
-Route::get('/datastaff', [StaffController::class, 'index'])->name('staff');
+Route::prefix('master-data')->name('master-data.')->group(function () {
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru');
+    Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
+    Route::get('/mapel', [MapelController::class, 'index'])->name('mapel');
+    Route::get('/staff', [StaffController::class, 'index'])->name('staff');
+});
 
 // Jadwal Akademik
 Route::get('/jadwal_akademik', [JadwalController::class, 'index'])->name('jadwal');
