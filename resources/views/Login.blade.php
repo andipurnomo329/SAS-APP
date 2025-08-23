@@ -44,6 +44,15 @@
                                     <input type="password" class="form-control form-control-lg" name="password" required
                                         id="password" placeholder="Password">
                                 </div>
+                                @if ($errors->any())
+                                    <div class="form-group alert alert-danger">
+                                        <ul class="mb-0">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="mt-3 d-grid gap-2">
                                     <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN IN</button>
                                 </div>

@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Session;
 
 class CheckApiToken
 {
@@ -16,18 +15,15 @@ class CheckApiToken
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $token = Session::get('api_token');
-        $user = Session::get('user');
-
         // 1) Cek token dan data user
-        if (!$token || !$user) {
+        if (!session('api_token') || !session('user')) {
              // Hanya hapus credential, bukan semua data session
             $request->session()->forget(['api_token', 'user']);
             // Perbarui CSRF token agar aman
             $request->session()->regenerateToken();
             
             return redirect()->route('login')
-                ->withErrors(['message' => 'Silakan login terlebih dahulu.']);
+                ->withErrors(['message' => 'Silahkan login terlebih dahulu.']);
         }
 
         // 2) Token valid, lanjutkan request

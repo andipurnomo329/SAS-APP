@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Services\MicroserviceConsumer;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController
@@ -29,7 +28,7 @@ class LoginController
             'password' => 'required|string',
         ]);
         
-        $response = $this->service->performRequest('POST', 'login', $request->all());
+        $response = $this->service->performRequest('POST', 'login', ['email' => $request->email, 'password' => $request->password]);
         $status = $response['resCode'];
 
         Log::info($request->all());
@@ -37,7 +36,7 @@ class LoginController
 
         if (!($status >= 200 && $status < 300)) {
             return back()
-                ->withErrors(['message' => 'Email atau password salah'])
+                ->withErrors(['message' => 'Email atau password salah.'])
                 ->withInput();
         }
         
@@ -55,18 +54,21 @@ class LoginController
     public function logout(Request $request)
     {
         $response = $this->service
-            ->setToken(Session::get('api_token'))
-            ->performRequest('POST', 'logout', ['email' => $request->email, 'password' => $request->password]);
+            ->setToken(session('api_token'))
+            ->performRequest('POST', 'logout');
 
         $status = $response['resCode'] ?? 0;
         if (!($status >= 200 && $status < 300)) {
             Log::error('API Logout failed', ['status' => $status, 'response' => $response]);
-            if ($status != 401) {
+            if ($status == 401) {
                 return back()->withErrors([
-                    'message' => 'Gagal logout. Silakan coba lagi.'
+                    'message' => 'Gagal logout. Silahkan coba lagi.'
                 ]);
             }
         }
+
+        Log::info($request->all());
+        Log::info($response);
 
         Auth::logout();
         // Hapus token dari session

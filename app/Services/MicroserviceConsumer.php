@@ -5,7 +5,7 @@ namespace App\Services;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
-use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class MicroserviceConsumer
 {
@@ -32,7 +32,7 @@ class MicroserviceConsumer
      * Kirim request ke mikroservice, menyertakan Authorization jika ada
      * @param string $method
      * @param string $uri
-     * @param $params
+     * @param array $params
      * @return array
      */
     public function performRequest(string $method, string $uri, array $params = []): array
@@ -68,7 +68,9 @@ class MicroserviceConsumer
         $status = $response['resCode'] ?? 0;
 
         if ($status == 401) {
-            throw new AuthenticationException;
+            throw new \Illuminate\Auth\AuthenticationException;
+        } elseif ($status == 403) {
+            throw new HttpException(403);
         }
         return $response;
     }

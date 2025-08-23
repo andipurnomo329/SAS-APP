@@ -3,7 +3,9 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -13,10 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
+            'check.role' => \App\Http\Middleware\CheckRole::class,
             'auth.session' => \App\Http\Middleware\CheckApiToken::class,
             'guest.session' => \App\Http\Middleware\RedirectIfSessionAuthenticated::class,
         ]);
-        $middleware->append(\App\Http\Middleware\PreventBackHistory::class);
+        // $middleware->append(\App\Http\Middleware\PreventBackHistory::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (AuthenticationException $e, $request) {
@@ -32,5 +35,15 @@ return Application::configure(basePath: dirname(__DIR__))
 
             // 4. Redirect ke form login
             return redirect('/login');
+        });
+
+        $exceptions->render(function (HttpException $e, Request $request) {
+            if ($e->getStatusCode() === 403) {
+                // return response()->view('errors.403'); // buat html kode-kode error
+                return redirect('/dashboard'); // untuk semetara
+            } elseif ($e->getStatusCode() === 419) {
+                return redirect('/login')
+                    ->withErrors(['message' => 'Session anda telah berakhir. Silahkan login kembali.']);
+            }
         });
     })->create();
