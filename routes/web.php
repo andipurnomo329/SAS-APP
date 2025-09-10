@@ -25,8 +25,9 @@ Route::middleware(['web'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         // Master Data 
-       Route::middleware('check.role:SuperAdmin,Admin')
-        ->prefix('master-data')
+        // middleware('check.role:SuperAdmin,Admin')
+        // ->
+       Route::prefix('master-data')
         ->name('master-data.')
         ->group(function () {
             Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');

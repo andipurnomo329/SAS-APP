@@ -20,6 +20,7 @@
 
                 <div class="page-header">
                     <h3 class="page-title"> Data Siswa </h3>
+                    @if(in_array(session('user.role'), ['SuperAdmin', 'Admin']))
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
@@ -32,6 +33,7 @@
                             </li>
                         </ol>
                     </nav>
+                    @endif
                 </div>
 
                 <div class="card">
@@ -54,6 +56,7 @@
                                             <td>MAT</td>
                                             <td>Matematika</td>
                                             <td>Opsinonal</td>
+                                            @if(in_array(session('user.role'), ['SuperAdmin', 'Admin']))
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="badge badge-secondary btn-sm dropdown-toggle"
@@ -72,11 +75,15 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            @else
+                                            <td>-</td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td>BIND</td>
                                             <td>Bahasa Indonesia</td>
                                             <td>Opsinonal</td>
+                                            @if(in_array(session('user.role'), ['SuperAdmin', 'Admin']))
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="badge badge-secondary btn-sm dropdown-toggle"
@@ -93,6 +100,9 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            @else
+                                            <td>-</td>
+                                            @endif
                                         </tr>
                                     </tbody>
                                 </table>

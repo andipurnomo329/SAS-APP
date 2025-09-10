@@ -42,6 +42,8 @@ class MicroserviceConsumer
             'headers' => [
                 'Accept' => 'application/json',
             ],
+            'timeout'         => 600,
+            'connect_timeout' => 30,
         ];
 
         // Tambahkan header Authorization bila token di-set
@@ -49,8 +51,16 @@ class MicroserviceConsumer
             $options['headers']['Authorization'] = "Bearer {$this->token}";
         }
 
+        $hasFile = collect($params)->contains(fn($v) =>
+            $v instanceof \Illuminate\Http\UploadedFile || is_resource($v)
+        );
+
         if ($method === 'POST') {
-            $options['form_params'] = $params;
+            if ($hasFile) {
+                $options['multipart'] = $this->buildMultipart($params);
+            } else {
+                $options['form_params'] = $params;
+            }
         } else {
             $options['query'] = $params;
         }
@@ -73,5 +83,27 @@ class MicroserviceConsumer
             throw new HttpException(403);
         }
         return $response;
+    }
+
+    protected function buildMultipart(array $params): array
+    {
+        $multipart = [];
+
+        foreach ($params as $name => $value) {
+            if ($value instanceof \Illuminate\Http\UploadedFile) {
+                $multipart[] = [
+                    'name'     => $name,
+                    'contents' => fopen($value->getRealPath(), 'r'),
+                    'filename' => $value->getClientOriginalName(),
+                    'headers'  => ['Content-Type' => $value->getMimeType()],
+                ];
+            } elseif (is_resource($value)) {
+                $multipart[] = ['name' => $name, 'contents' => $value];
+            } else {
+                $multipart[] = ['name' => $name, 'contents' => (string) $value];
+            }
+        }
+
+        return $multipart;
     }
 }

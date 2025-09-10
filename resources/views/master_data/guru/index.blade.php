@@ -18,6 +18,7 @@
                 <!-- Page Header -->
                 <div class="page-header">
                     <h3 class="page-title">Data Guru</h3>
+                    @if(in_array(session('user.role'), ['SuperAdmin', 'Admin']))
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
@@ -30,6 +31,7 @@
                             </li>
                         </ol>
                     </nav>
+                    @endif
                 </div>
 
                 <!-- Table Card -->
@@ -53,16 +55,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @forelse ($gurus as $guru)
                                         <tr>
-                                            <td><img src="{{ asset('images/faces/face1.jpg') }}" width="50" height="50"
-                                                    class="rounded-circle"></td>
-                                            <td>Arianto</td>
-                                            <td>0056789101</td>
-                                            <td>Guru@gmail.com</td>
-                                            <td>Guru</td>
-                                            <td>IPA,IPS,PKN</td>
-                                            <td>10A</td>
-                                            <td><label class="badge badge-info">Honorer</label></td>
+                                            <td>
+                                                <img src="{!! $guru['foto'] ?? asset('images/faces/face1.jpg') !!}" 
+                                                    class="rounded-circle" width="50" height="50">
+                                            </td>
+                                            <td>{{ $guru['nama_lengkap'] }}</td>
+                                            <td>{{ $guru['nip'] }}</td>
+                                            <td>{{ $guru['email'] }}</td>
+                                            <td>{{ $guru['jabatan'] }}</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <span class="badge badge-{{ $guru['status_kepegawaian'] === 'PNS' ? 'success' : 'info' }}">
+                                                    {{ $guru['status_kepegawaian'] }}
+                                                </span>
+                                            </td>
+                                            @if(in_array(session('user.role'), ['SuperAdmin', 'Admin']))
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="badge badge-secondary btn-sm dropdown-toggle"
@@ -81,39 +91,38 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            @else
+                                            <td>-</td>
+                                            @endif
                                         </tr>
-
-                                        <tr>
-                                            <td><img src="{{ asset('images/faces/face1.jpg') }}" width="50" height="50"
-                                                    class="rounded-circle"></td>
-                                            <td>Arianto</td>
-                                            <td>0056789101</td>
-                                            <td>Guru@gmail.com</td>
-                                            <td>Wali Kelas</td>
-                                            <td>IPA,IPS,PKN</td>
-                                            <td>11A</td>
-                                            <td><label class="badge badge-success">PNS</label></td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="badge badge-secondary btn-sm dropdown-toggle"
-                                                        type="button" data-bs-toggle="dropdown"> <i
-                                                            class="mdi mdi-cog"></i></button>
-                                                    <div class="dropdown-menu">
-                                                        <button class="dropdown-item btn-show-edit-modal">
-                                                            <i class="mdi mdi-lead-pencil"></i> Edit
-                                                        </button>
-                                                        <button class="dropdown-item"><i
-                                                                class="mdi mdi-delete-forever"></i> Delete</button>
-                                                        <button type="button"
-                                                            class="dropdown-item btn-show-detail-modal">
-                                                            <i class="mdi mdi-eye"></i> Detail
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- Tambahkan data lain sesuai kebutuhan -->
+                                        @empty
+                                        @endforelse
                                     </tbody>
+                                    <tfoot>
+                                        @if($total > 0)
+                                        <tr>
+                                        <td colspan="9">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                Showing {{ $from }} to {{ $to }} of {{ $total }} entries
+                                            </div>
+                                            <ul class="pagination mb-0">
+                                                @foreach($paginationLinks as $link)
+                                                <li class="page-item
+                                                            {{ $link['active'] ? 'active' : '' }}
+                                                            {{ empty($link['url']) ? 'disabled' : '' }}">
+                                                    <a class="page-link"
+                                                    href="{{ $link['url'] ?? '#' }}">
+                                                    {!! $link['label'] !!}
+                                                    </a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                        @endif
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>

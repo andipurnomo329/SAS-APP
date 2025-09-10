@@ -10,7 +10,7 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <!-- Gunakan action & method sesuai kebutuhan -->
-                <form id="staffForm" method="post" action="{{route ('kelas') }}" novalidate>
+                <form id="staffForm" method="post" action="{{ route ('master-data.kelas') }}" novalidate>
                     <div class="mb-3">
                         <label for="namaGuru" class="form-label">NIP : <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="kode_mapel" name="namaGuru" placeholder="Nip"
